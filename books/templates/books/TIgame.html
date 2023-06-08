@@ -1,0 +1,290 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryVoyage</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABICAIAAAD51HXFAAAEyUlEQVR4nOWbT2wbRRTGn1tUIXmRewqphFKttUsvZE2RIOXg9GApIkjOiUiAgoA2uTWtkcohcY5x00Olpml7cgkIo7RquGCLtKrqAzZSCYemtnuha9Y4VLXjA3IlW+K2HByZZL1/xt6Z2VnnO9qbN6Of8+1+M/MWVIb17uezT579SXPEQ8CqpmPL+WIpsZGmOSijOKZjyz/cSwNAMvsbzXFZxLG4utZiAQDb1VpOVqgNzRyOxEZ6cfW25hNqo7OFI7GRnrm0rPmQpl8YwpGTlYsr8c7PafqFFRw5WRmbnX/ZaOp+m9kq0JkGEzjKlZoJC6B4+3AeR73RnJxbNGEBAPliqVypUZiMwzjqjebYubl8sWR5ZTL7iMJ8HMYxE7uKwgJo+cVJHNOx5VR2E/FiOn5xDEc7hqOLgl+cwZHYSHfLAgCSGeJ5zAEcutETRdknT+umDyD7oo0js1XojUVLKcL/IFRx5GRlci5mpwLp24dHVVWiA7RlHsPRVb1/5yjnxTKlTh1ee/p3ZqvwbPs5APhe4149coTEMPVGc2x2vvZP3X6pE0NvBES//Tq6eiUg8qnsZiq7CXAbAIYGBwIiHxD9oyeHJdGP5XdoRc/tKp7UkMw++uzDEJZSnfJ8//NDk3sbFjrvfXEeMXoi6t9fUxir7ZXnrxc7JybPIl7t47ySwJ9+Z1gS/QHBf/zYgOWf9BC3LHV3KToRPIW3ZkseVVV7/vUs6ZBgAQBT46Fb0Qj2stDCcf3uT1+v3LJfS0Mnce+hZtcTl3ycd+f+HRKVPaqqlis1dL8wIkJ+OQQAx48NSAKPvTRREVq/7KZSco8uQkqR2V7fxTERfJ9EdXJ62WiSOHDYxeFGv2Qe499e/38J5zq/EPzvABf6Zbtam7u5ivcIZt+KFnuapiZJ4CXR315P9FxnH47F1TVCwYmyel5q7cORk5WRLy+QmaGTQqej3f5586OzuFbizMqEjhbHxWvxG+tJ6jN0Um06kujX4uhXv6Boajyk3ToOiP6hQetdjP5Ta9NAZyed0M4Ky5IE/sqFGdA9WHBdPLUpSeAf3Fhq3VB1cBwov/g4bzwaaT9c9I+dDohffJz3wfVLe48p9HEcEL/EoxHNkY0+joPgl/h8pNMEhme0dhZC7GvhzCe6DjDEMTHat7ePqfHQwplPdb8yO7J+/YOP7Z8ws6ZwcGR9acHoW7OGhnDfPV8kgY9HvzK5wAxHn/llb9wykimO4CkfsU4KytLELSNZdP/0h18645aRLHD0h1+unJ9B7JCxboZy+/MlPh9BD9nWrXKu9su5yYmuFhzWONzrl6nxUGsXA13WOFya1oNvv9VDS4w1jqOcNxwc6WlKjkkS+PXLhtHTREhttu46rxwaHLCMW0ZCwhF2z+3Dx3nXl6I9938i4XCLX9DjlpFQe9Jd4Rf0uGUkVBzhUdbXL13FLSN116JfrtRyRSUvK788LuSLJXbSKq5OU1tvLDBCB2PXLc4XOByhIwn879+t4KpG8H2WcqVWru5ktgo5WcnJJRJ9Eig7Ol2J3us99UYzLysY6fg47x8/foP3VR96ODSyScd+xNCVYzg06pbO5rfXSLzzxAqOTrXR5GVF08+IJWLoil0cGrXpnD45TO4I+T9sakx5tPI0ywAAAABJRU5ErkJggg==" type="image/x-icon">
+    <style>
+        * { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {
+            background: #FBECD2;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #logo img {
+            height: 50px;
+            width: auto;
+        }
+
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 98%;
+            height: 70px;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #00BCC5;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0px 8px 15px #073B4C;
+            margin: 10px;
+            z-index: 100;
+        }
+
+        .navigation a{
+            text-decoration: none;
+            color: #073B4C;
+            padding: 6px 15px;
+            border-radius: 20px;
+            margin: 0 10px;
+        }
+
+        .navigation a:hover, 
+        .navigation a.active {
+            background: #FF6B00;
+            color: #FBECD2;
+        }
+
+        .game {
+            height: fit-content;
+            color:#073B4C;
+            margin: 40px;
+            margin-top: 120px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: #FF6B00;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+            width: 40%;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: left;
+            box-shadow: 0px 8px 15px #073B4C;
+        }
+
+        .container {
+  padding: 2rem 7rem;
+  border-radius: 14px;
+  background: #FBECD2;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.result_images {
+  display: flex;
+  margin: auto;
+  column-gap: 16rem;
+}
+
+
+.result_images img {
+  width: 120px;
+  align-items: center;
+}
+
+.result {
+  text-align: center;
+  font-size: 2rem;
+  color: #073B4C;
+  margin-top: 1.5rem;
+}
+
+.option_image img {
+  width: 100px;
+}
+
+.option_images {
+  display: flex;
+  align-items: center;
+  margin-top: 2.5rem;
+  justify-content: space-between;
+}
+
+.container.start .option_images {
+  pointer-events: none;
+}
+
+.option_image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.option_image:hover {
+  opacity: 1;
+}
+
+.option_image.active {
+  opacity: 1;
+}
+
+.option_image img {
+  pointer-events: none;
+}
+
+.option_image p {
+  color: #073B4C;
+  font-size:20px;
+  margin-top: 1rem;
+  pointer-events: none;
+}
+
+
+        footer {
+            background-color: #00BCC5; 
+            color: #073B4C;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            box-shadow: 0px -2px 10px #073B4C;
+        }
+
+        .footer-container {
+            max-width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #FBECD2; 
+        }
+
+        footer p {
+            font-size: small;
+            margin: 0.5em 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <img src="data:image/png;base64,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" alt="StoryVoyage Logo">
+        </div>
+        <nav class="navigation">
+            <a href="{% url 'landing_page' %}">Home</a>
+            <a href="{% url 'book_list' %}">Books</a>
+            <a href="{% url 'badges' %}">Badges</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'register' %}">Join!</a>
+        </nav>
+    </header>
+
+    <div class="game">
+        <div class="result_field">
+            <div class="result_images">
+                <span class="user_result">
+                    <img src="{% static 'books/images/sword.png' %}" alt="" />
+                </span>
+                <span class="cpu_result">
+                    <img src="{% static 'books/images/sword.png' %}" alt="" />
+                </span>
+            </div>
+            <div class="result">Let's Play!</div>
+        </div>
+        <div class="option_images">
+            <span class="option_image">
+                <img src="{% static 'books/images/sword.png' %}" alt="" />
+                <p>Fight</p>
+            </span>
+            <span class="option_image">
+                <img src="{% static 'books/images/shield.png' %}" alt="" />
+                <p>Protect</p>
+            </span>
+            <span class="option_image">
+                <img src="{% static 'books/images/oliveBranch.png' %}" alt="" />
+                <p>Negotiate</p>
+            </span>
+        </div>
+    </div>
+    <script>
+        const gameContainer = document.querySelector(".game"),
+          userResult = document.querySelector(".user_result img"),
+          cpuResult = document.querySelector(".cpu_result img"),
+          result = document.querySelector(".result"),
+          optionImages = document.querySelectorAll(".option_image");
+    
+    optionImages.forEach((image, index) => {
+        image.addEventListener("click", (e) => {
+            image.classList.add("active");
+            userResult.src = cpuResult.src = "{% static 'books/images/sword.png' %}";
+            result.textContent = "Wait...";
+            
+            optionImages.forEach((image2, index2) => {
+                if(index !== index2) image2.classList.remove("active");
+            });
+    
+            gameContainer.classList.add("start");
+    
+            setTimeout(() => {
+                gameContainer.classList.remove("start");
+    
+                let imageSrc = e.target.querySelector("img").src;
+                userResult.src = imageSrc;
+    
+                let randomNumber = Math.floor(Math.random() * 3);
+                let cpuImages = ["{% static 'books/images/sword.png' %}", 
+                                  "{% static 'books/images/shield.png' %}", 
+                                  "{% static 'books/images/oliveBranch.png' %}"];
+                cpuResult.src = cpuImages[randomNumber];
+    
+                let cpuValue = ["S", "SH", "O"][randomNumber];
+                let userValue = ["S", "SH", "O"][index];
+    
+                let outcomes = {
+                    SS: "Succesful Attack",
+                    SSH: "Shielded Attack",
+                    SO: "Failed Negotiation, Attack Launched",
+                    SHSH: "Mutual Protection",
+                    SHS: "Attack Blocked by Shield",
+                    SHO: "Successful Negotiation, Protection Ensured",
+                    OO: "Successful Peace Negotiation",
+                    OS: "Negotiation Failed, Attack Launched",
+                    OSH: "Negotiation Successful, Attack Averted",
+                };
+
+    
+                let outcomeValue = outcomes[userValue + cpuValue];
+    
+                result.textContent = userValue === cpuValue ? "Match Draw" : `${outcomeValue} !`;
+            }, 2500);
+        });
+    });
+    </script>
+    
+
+
+    <footer>
+        <div class="footer-container">
+          <p>StoryVoyage: A website that indents to gamify reading. Created by <a href="mailto:20190223@student.act.edu">Gabriela Shehu</a></p>
+          <p>Supervised by: <a href="mailto:ivictor@act.edu">Iosif Victoratos</a></p>
+          <p>Books retrieved from <a href="https://www.gutenberg.org/" target="_blank">Project Gutenberg</a></p>
+          <p>&copy; 2023 Gabriela Shehu. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+</body>
+</html>

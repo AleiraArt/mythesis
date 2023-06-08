@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryVoyage</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABICAIAAAD51HXFAAAEyUlEQVR4nOWbT2wbRRTGn1tUIXmRewqphFKttUsvZE2RIOXg9GApIkjOiUiAgoA2uTWtkcohcY5x00Olpml7cgkIo7RquGCLtKrqAzZSCYemtnuha9Y4VLXjA3IlW+K2HByZZL1/xt6Z2VnnO9qbN6Of8+1+M/MWVIb17uezT579SXPEQ8CqpmPL+WIpsZGmOSijOKZjyz/cSwNAMvsbzXFZxLG4utZiAQDb1VpOVqgNzRyOxEZ6cfW25hNqo7OFI7GRnrm0rPmQpl8YwpGTlYsr8c7PafqFFRw5WRmbnX/ZaOp+m9kq0JkGEzjKlZoJC6B4+3AeR73RnJxbNGEBAPliqVypUZiMwzjqjebYubl8sWR5ZTL7iMJ8HMYxE7uKwgJo+cVJHNOx5VR2E/FiOn5xDEc7hqOLgl+cwZHYSHfLAgCSGeJ5zAEcutETRdknT+umDyD7oo0js1XojUVLKcL/IFRx5GRlci5mpwLp24dHVVWiA7RlHsPRVb1/5yjnxTKlTh1ee/p3ZqvwbPs5APhe4149coTEMPVGc2x2vvZP3X6pE0NvBES//Tq6eiUg8qnsZiq7CXAbAIYGBwIiHxD9oyeHJdGP5XdoRc/tKp7UkMw++uzDEJZSnfJ8//NDk3sbFjrvfXEeMXoi6t9fUxir7ZXnrxc7JybPIl7t47ySwJ9+Z1gS/QHBf/zYgOWf9BC3LHV3KToRPIW3ZkseVVV7/vUs6ZBgAQBT46Fb0Qj2stDCcf3uT1+v3LJfS0Mnce+hZtcTl3ycd+f+HRKVPaqqlis1dL8wIkJ+OQQAx48NSAKPvTRREVq/7KZSco8uQkqR2V7fxTERfJ9EdXJ62WiSOHDYxeFGv2Qe499e/38J5zq/EPzvABf6Zbtam7u5ivcIZt+KFnuapiZJ4CXR315P9FxnH47F1TVCwYmyel5q7cORk5WRLy+QmaGTQqej3f5586OzuFbizMqEjhbHxWvxG+tJ6jN0Um06kujX4uhXv6Boajyk3ToOiP6hQetdjP5Ta9NAZyed0M4Ky5IE/sqFGdA9WHBdPLUpSeAf3Fhq3VB1cBwov/g4bzwaaT9c9I+dDohffJz3wfVLe48p9HEcEL/EoxHNkY0+joPgl/h8pNMEhme0dhZC7GvhzCe6DjDEMTHat7ePqfHQwplPdb8yO7J+/YOP7Z8ws6ZwcGR9acHoW7OGhnDfPV8kgY9HvzK5wAxHn/llb9wykimO4CkfsU4KytLELSNZdP/0h18645aRLHD0h1+unJ9B7JCxboZy+/MlPh9BD9nWrXKu9su5yYmuFhzWONzrl6nxUGsXA13WOFya1oNvv9VDS4w1jqOcNxwc6WlKjkkS+PXLhtHTREhttu46rxwaHLCMW0ZCwhF2z+3Dx3nXl6I9938i4XCLX9DjlpFQe9Jd4Rf0uGUkVBzhUdbXL13FLSN116JfrtRyRSUvK788LuSLJXbSKq5OU1tvLDBCB2PXLc4XOByhIwn879+t4KpG8H2WcqVWru5ktgo5WcnJJRJ9Eig7Ol2J3us99UYzLysY6fg47x8/foP3VR96ODSyScd+xNCVYzg06pbO5rfXSLzzxAqOTrXR5GVF08+IJWLoil0cGrXpnD45TO4I+T9sakx5tPI0ywAAAABJRU5ErkJggg==" type="image/x-icon">
+    <style>
+        * { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {
+            background: #FBECD2;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #logo img {
+            height: 50px;
+            width: auto;
+        }
+
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 98%;
+            height: 70px;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #00BCC5;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0px 8px 15px #073B4C;
+            margin: 10px;
+            z-index: 100;
+        }
+
+        .navigation a{
+            text-decoration: none;
+            color: #073B4C;
+            padding: 6px 15px;
+            border-radius: 20px;
+            margin: 0 10px;
+        }
+
+        .navigation a:hover, 
+        .navigation a.active {
+            background: #FF6B00;
+            color: #FBECD2;
+        }
+
+        .content{
+            display: flex;
+            margin-bottom: 80px;
+        }
+
+        .chapter-list {
+            width: 18%;
+            background-color: #FBECD2;
+            box-shadow: 0px 8px 15px #073B4C;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 0 auto;
+            margin-top: 120px;
+            color:#073B4C;
+            height:fit-content;
+        }
+
+        .chapter-list ul {
+            list-style-type: none;
+        }
+        
+        .chapter-list ul li a {
+            display: inline-block;
+            padding: 10px 20px; 
+            text-decoration: none;
+            background-color: #00BCC5; 
+            color: #073B4C; 
+            border-radius: 20px; 
+            margin-bottom: 10px;
+        }
+        
+        .chapter-list ul li a:hover {
+            background-color: #FF6B00; 
+        }
+
+        .chapter-list {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .question {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            margin-bottom: 1em;
+        }
+        
+        .option-group label {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            cursor: pointer;
+            padding: 1em;
+            border-radius: 0.3em;
+            transition: background 0.2s;
+        }
+        
+        .option-group label:hover {
+            background: #FBECD2;
+        }
+        
+        .option-group input[type="radio"] {
+            margin: 0;
+        }
+        
+        #nextButton {
+            display: block;
+            background: #00BCC5;
+            color: #073B4C;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+        
+        #nextButton:hover {
+            background: #FF6B00;
+            color:#FBECD2;
+        }
+        
+        #nextButton:disabled {
+            cursor: not-allowed;
+        }
+
+        .chapter-info {
+            width: 50%;
+            background-color: #FBECD2;
+            box-shadow: 0px 8px 15px #073B4C;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 0 auto;
+            margin-top: 120px;
+            color:#073B4C;
+            height:fit-content;
+        }
+
+        #container {
+            width: 26%;
+            background-color: #FBECD2;
+            box-shadow: 0px 8px 15px #073B4C;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 0 auto;
+            margin-top: 120px;
+            color:#073B4C;
+            height:fit-content;
+        }
+
+
+        #container input{
+            border: none;
+            background-color: #FBECD2;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #073B4C;
+        }
+
+        #search-btn {
+           padding: 10px 10px;
+           border-radius: 20px;
+           border: none;
+           /* border: 3px solid #073B4C; */
+           background-color: #00BCC5;
+           color: #073B4C;
+           font-size: 1em;
+           transition: background-color 0.3s;
+        }
+
+        #search-btn:hover {
+            /* border: 3px solid #00BCC5; */
+            background-color: #073B4C;
+            color:#FBECD2;
+        }
+
+        .result h3{
+            font-size: 20px;
+            color:#073B4C;
+        }
+
+        .result .word {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .result .details{
+            display: flex;
+            gap: 10px;
+            color:#00BCC5;
+            margin: 5px 0 20px 0;
+            font-size: 14px;
+        }
+
+        .word-meaning {
+            color:#073B4C;
+        }
+
+        .word-example{
+            color: #073B4C;
+            font-style: italic;
+            border-left: 5px solid #00BCC5;
+            padding-left: 20px;
+            margin-top: 30px;
+        }
+
+        #container {
+            position: sticky;
+            top: 20px; 
+        }
+
+        footer {
+            background-color: #00BCC5; 
+            color: #073B4C;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            box-shadow: 0px -2px 10px #073B4C;
+        }
+
+        .footer-container {
+            max-width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #FBECD2; 
+        }
+
+        footer p {
+            font-size: small;
+            margin: 0.5em 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <img src="data:image/png;base64,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" alt="StoryVoyage Logo">
+        </div>
+        <nav class="navigation">
+            <a href="{% url 'landing_page' %}">Home</a>
+            <a href="{% url 'book_list' %}" class="active">Books</a>
+            <a href="{% url 'badges' %}">Badges</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'register' %}">Join!</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="chapter-list">
+            <ul>
+                <li><a href="{% url 'pap1' %}">Chapter 1</a></li><br><br>
+                <li><a href="{% url 'pap2' %}">Chapter 2</a></li><br><br>
+                <li><a href="{% url 'pap3' %}">Chapter 3</a></li><br><br>
+                
+                <div id="questionContainer">
+                    <h4>What did Mr. Darcy call Elizabeth?</h4><br>
+                    <input type="radio" id="Tolerable" name="character" value="Tolerable">
+                    <label for="Tolerable">Tolerable</label><br>
+                    <input type="radio" id="Beautiful" name="character" value="Beautiful">
+                    <label for="Beautiful">Beautiful</label><br>
+                    <input type="radio" id="Annoying" name="character" value="Annoying">
+                    <label for="Annoying">Annoying</label><br><br>
+                </div>
+                
+                <button id="nextButton" disabled>Mini Game</button>
+            </ul>
+        </div>
+        <div class="chapter-info">
+            <p class="center">
+                <h4>Chapter 3</h4><br>
+            </p>
+
+            <p>Not all that Mrs. Bennet, however, with the assistance of her five
+daughters, could ask on the subject, was sufficient to draw from her
+husband any satisfactory description of Mr. Bingley. They attacked him
+in various ways, with barefaced questions, ingenious suppositions, and
+distant surmises; but he eluded the skill of them all; and they were at
+last obliged to accept the second-hand intelligence of their neighbour,
+Lady Lucas. Her report was highly favourable.<br><br> Sir William had been
+delighted with him. He was quite young, wonderfully handsome, extremely
+agreeable, and, to crown the whole, he meant to be at the next assembly
+with a large party. Nothing could be more delightful! To be fond of
+dancing was a certain step towards falling in love; and very lively
+hopes of Mr. Bingley’s heart were entertained.</p> <br>
+
+<p>“If I can but see one of my daughters happily settled at Netherfield,”
+said Mrs. Bennet to her husband, “and all the others equally well
+married, I shall have nothing to wish for.”</p><br>
+
+<p>In a few days Mr. Bingley returned Mr. Bennet’s visit, and sat about ten
+minutes with him in his library. He had entertained hopes of being
+admitted to a sight of the young ladies, of whose beauty he had heard
+much; but he saw only the father. The ladies were somewhat more
+fortunate, for they had the advantage of ascertaining, from an upper
+window, that he wore a blue coat and rode a black horse.</p><br>
+
+<p>An invitation to dinner was soon afterwards despatched; and already had
+Mrs. Bennet planned the courses that were to do credit to her
+housekeeping, when an answer arrived which deferred it all.<br><br> Mr. Bingley
+was obliged to be in town the following day, and consequently unable to
+accept the honour of their invitation, etc. Mrs. Bennet was quite
+disconcerted. She could not imagine what business he could have in town
+so soon after his arrival in Hertfordshire; and she began to fear that
+he might always be flying about from one place to another, and never
+settled at Netherfield as he ought to be. Lady Lucas quieted her fears a
+little by starting the idea of his</p><br>
+
+
+<p>Being gone to London only to get a large party for the ball; and a
+    report soon followed that Mr. Bingley was to bring twelve ladies and
+    seven gentlemen with him to the assembly. The girls grieved over such a
+    number of ladies; but were comforted the day before the ball by hearing
+    that, instead of twelve, he had brought only six with him from London,
+    his five sisters and a cousin. And when the party entered the
+    assembly-room, it consisted of only five altogether: Mr. Bingley, his
+    two sisters, the husband of the eldest, and another young man.</p><br>
+    
+    <p>Mr. Bingley was good-looking and gentlemanlike: he had a pleasant
+    countenance, and easy, unaffected manners. His sisters were fine women,
+    with an air of decided fashion. His brother-in-law, Mr. Hurst, merely
+    looked the gentleman; but his friend Mr. Darcy soon drew the attention
+    of the room by his fine, tall person, handsome features, noble mien, and
+    the report, which was in general circulation within five minutes after
+    his entrance, of his having ten thousand a year. <br><br>The gentlemen
+    pronounced him to be a fine figure of a man, the ladies declared he was
+    much handsomer than Mr. Bingley, and he was looked at with great
+    admiration for about half the evening, till his manners gave a disgust
+    which turned the tide of his popularity; for he was discovered to be
+    proud, to be above his company, and above being pleased; and not all his
+    large estate in Derbyshire could save him from having a most forbidding,
+    disagreeable countenance, and being unworthy to be compared with his
+    friend.</p><br>
+    
+    <p>Mr. Bingley had soon made himself acquainted with all the principal
+    people in the room: he was lively and unreserved, danced every dance,
+    was angry that the ball closed so early, and talked of giving one
+    himself at Netherfield. Such amiable qualities must speak for
+    themselves. What a contrast between him and his friend! Mr. Darcy danced
+    only once with Mrs. Hurst and once with Miss Bingley, declined being
+    introduced to any other lady, and spent the rest of the evening in
+    walking about the room, speaking occasionally to one of his own party.
+    His character was decided.<br><br> He was the proudest, most disagreeable man in
+    the world, and everybody hoped that he would never come there again.
+    Amongst the most violent against him was Mrs. Bennet, whose dislike of
+    his general behaviour was sharpened into particular resentment by his
+    having slighted one of her daughters.</p><br>
+    
+    <p>Elizabeth Bennet had been obliged, by the scarcity of gentlemen, to sit
+    down for two dances; and during part of that time, Mr. Darcy had been
+    standing near enough for her to overhear a conversation between him and
+    Mr. Bingley, who came from the dance for a few minutes to press his
+    friend to join it.</p><br>
+    
+    <p>“Come, Darcy,” said he, “I must have you dance. I hate to see you
+    standing about by yourself in this stupid manner. You had much better
+    dance.”</p><br>
+    
+    <p>“I certainly shall not. You know how I detest it, unless I am
+    particularly acquainted with my partner. At such an assembly as this, it
+    would be insupportable. Your sisters are engaged, and there is not
+    another woman in the room whom it would not be a punishment to me to
+    stand up with.”</p><br>
+    
+    <p>“I would not be so fastidious as you are,” cried Bingley, “for a
+    kingdom! Upon my honour, I never met with so many pleasant girls in my
+    life as I have this evening; and there are several of them, you see,
+    uncommonly pretty.”</p><br>
+    
+    <p>“<i>You</i> are dancing with the only handsome girl in the room,” said Mr.
+    Darcy, looking at the eldest Miss Bennet.</p><br>
+    
+    <p>“Oh, she is the most beautiful creature I ever beheld! But there is one
+    of her sisters sitting down just behind you, who is very pretty, and I
+    dare say very agreeable. Do let me ask my partner to introduce you.”</p><br>
+
+    <p>
+        “She is tolerable”<br>
+        </p><br>
+
+        <p>“Which do you mean?” and turning round, he looked for a moment at
+            Elizabeth, till, catching her eye, he withdrew his own, and coldly said,
+            “She is tolerable: but not handsome enough to tempt <i>me</i>; and I am in no
+            humour at present to give consequence to young ladies who are slighted
+            by other men. You had better return to your partner and enjoy her
+            smiles, for you are wasting your time with me.”</p><br>
+            
+            <p>Mr. Bingley followed his advice. Mr. Darcy walked off; and Elizabeth
+            remained with no very cordial feelings towards him. She told the story,
+            however, with great spirit among her friends; for she had a lively,
+            playful disposition, which delighted in anything ridiculous.</p><br>
+            
+            <p>The evening altogether passed off pleasantly to the whole family. Mrs.
+            Bennet had seen her eldest daughter much admired by the Netherfield
+            party. Mr. Bingley had danced with her twice, and she had been
+            distinguished by his sisters. Jane was as much gratified by this as her
+            mother could be, though in a quieter way. Elizabeth felt Jane’s
+            pleasure. Mary had heard herself mentioned to Miss Bingley as the most
+            accomplished girl in the neighbourhood; and Catherine and Lydia had been
+            fortunate enough to be never without partners, which was all that they
+            had yet learnt to care for at a ball. <br><br>They returned, therefore, in good
+            spirits to Longbourn, the village where they lived, and of which they
+            were the principal inhabitants. They found Mr. Bennet still up. With a
+            book, he was regardless of time; and on the present occasion he had a
+            good deal of curiosity as to the event of an evening which had raised
+            such splendid expectations. He had rather hoped that all his wife’s
+            views on the stranger would be disappointed; but he soon found that he
+            had a very different story to hear.</p><br>
+            
+            <p>“Oh, my dear Mr. Bennet,” as she entered the room, “we have had a most
+            delightful evening, a most excellent ball. I wish you had been there.
+            Jane was so admired, nothing could be like it. Everybody said how well
+            she looked; and Mr. Bingley thought her quite beautiful, and danced with
+            her twice. Only think of <i>that</i>, my dear: he actually danced with her
+            twice; and she was the only creature in the room that he asked a second
+            time. First of all, he asked Miss Lucas.<br><br> I was so vexed to see him stand
+            up with her; but, however, he did not admire her at all; indeed, nobody
+            can, you know; and he seemed quite struck with Jane as she was going
+            down the dance. So he inquired who she was, and got introduced, and
+            asked her for the two next. Then, the two third he danced with Miss
+            King, and the two fourth with Maria Lucas, and the two fifth with Jane
+            again, and the two sixth with Lizzy, and the <i>Boulanger</i>——”</p><br>
+            
+            <p>“If he had had any compassion for <i>me</i>,” cried her husband impatiently,
+            “he would not have danced half so much! For God’s sake, say no more of
+            his partners. O that he had sprained his ancle in the first dance!”</p><br>
+            
+            <p>“Oh, my dear,” continued Mrs. Bennet, “I am quite delighted with him. He
+            is so excessively handsome! and his sisters are charming women. I never
+            in my life saw anything more elegant than their dresses. I dare say the
+            lace upon Mrs. Hurst’s gown——”</p><br>
+            
+            <p>Here she was interrupted again. Mr. Bennet protested against any
+            description of finery. She was therefore obliged to seek another branch
+            of the subject, and related, with much bitterness of spirit, and some
+            exaggeration, the shocking rudeness of Mr. Darcy.</p><br>
+            
+            <p>“But I can assure you,” she added, “that Lizzy does not lose much by not
+            suiting <i>his</i> fancy; for he is a most disagreeable, horrid man, not at
+            all worth pleasing. So high and so conceited, that there was no enduring
+            him! He walked here, and he walked there, fancying himself so very
+            great! Not handsome enough to dance with! I wish you had been there, my
+            dear, to have given him one of your set-downs. I quite detest the man.”</p>
+            </p>
+                
+  
+        </div>
+        <div id="container">
+            <div class="search-box">
+                <input type="text" placeholder="Type the word here..." id="inp-word">
+            
+                <button id="search-btn">Search</button>
+            </div>
+            <div class="result" id="result">  
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let characterInputs = document.getElementsByName('character');
+        let nextButton = document.getElementById('nextButton');
+        
+        for(let i=0; i < characterInputs.length; i++){
+            characterInputs[i].addEventListener('change', function() {
+                if (this.value == "Tolerable") {
+                    nextButton.disabled = false;
+                    nextButton.style.opacity = 1;
+                } else {
+                    nextButton.disabled = true;
+                    nextButton.style.opacity = 0.5;
+                }
+            });
+        }
+        
+        nextButton.addEventListener('click', function() {
+            if (!this.disabled) {
+                window.location.href = "{% url 'papgame' %}";
+            }
+        });
+
+    </script>
+
+        <script>
+            const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+
+            const result = document.getElementById("result");
+
+            const btn = document.getElementById("search-btn");
+
+            btn.addEventListener("click", () => {
+                let inpWord = document.getElementById("inp-word").value;
+
+                fetch(`${url}${inpWord}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    result.innerHTML = `
+                    <div class="word">
+                    <h3>${inpWord}</h3>
+                </div>
+                <div class="details">
+                    <p>${data[0].meanings[0].partOfSpeech}</p>
+                    <p>/${data[0].phonetic}/</p>
+                </div>
+                <p class="word-meaning">
+                    ${data[0].meanings[0].definitions[0].definition || "No definition found."}
+                </p>
+                <p class="word-example">
+                    ${data[0].meanings[0].definitions[0].example || "No example found."}
+                </p>
+
+                `;
+                })
+                .catch( () => {
+                    result.innerHTML = `<h3>Couldn't Find the Word</h3>`;
+                });
+
+            });
+
+        </script>
+    
+
+
+    <footer>
+        <div class="footer-container">
+          <p>StoryVoyage: A website that indents to gamify reading. Created by <a href="mailto:20190223@student.act.edu">Gabriela Shehu.</a></p>
+          <p>Supervised by: <a href="mailto:ivictor@act.edu">Iosif Victoratos</a></p>
+          <p>Books retrieved from <a href="https://www.gutenberg.org/" target="_blank">Project Gutenberg</a></p>
+          <p>&copy; 2023 Gabriela Shehu. All rights reserved.</p>
+        </div>
+      </footer>
+
+</body>
+</html>

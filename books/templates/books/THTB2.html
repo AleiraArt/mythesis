@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryVoyage</title>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABICAIAAAD51HXFAAAEyUlEQVR4nOWbT2wbRRTGn1tUIXmRewqphFKttUsvZE2RIOXg9GApIkjOiUiAgoA2uTWtkcohcY5x00Olpml7cgkIo7RquGCLtKrqAzZSCYemtnuha9Y4VLXjA3IlW+K2HByZZL1/xt6Z2VnnO9qbN6Of8+1+M/MWVIb17uezT579SXPEQ8CqpmPL+WIpsZGmOSijOKZjyz/cSwNAMvsbzXFZxLG4utZiAQDb1VpOVqgNzRyOxEZ6cfW25hNqo7OFI7GRnrm0rPmQpl8YwpGTlYsr8c7PafqFFRw5WRmbnX/ZaOp+m9kq0JkGEzjKlZoJC6B4+3AeR73RnJxbNGEBAPliqVypUZiMwzjqjebYubl8sWR5ZTL7iMJ8HMYxE7uKwgJo+cVJHNOx5VR2E/FiOn5xDEc7hqOLgl+cwZHYSHfLAgCSGeJ5zAEcutETRdknT+umDyD7oo0js1XojUVLKcL/IFRx5GRlci5mpwLp24dHVVWiA7RlHsPRVb1/5yjnxTKlTh1ee/p3ZqvwbPs5APhe4149coTEMPVGc2x2vvZP3X6pE0NvBES//Tq6eiUg8qnsZiq7CXAbAIYGBwIiHxD9oyeHJdGP5XdoRc/tKp7UkMw++uzDEJZSnfJ8//NDk3sbFjrvfXEeMXoi6t9fUxir7ZXnrxc7JybPIl7t47ySwJ9+Z1gS/QHBf/zYgOWf9BC3LHV3KToRPIW3ZkseVVV7/vUs6ZBgAQBT46Fb0Qj2stDCcf3uT1+v3LJfS0Mnce+hZtcTl3ycd+f+HRKVPaqqlis1dL8wIkJ+OQQAx48NSAKPvTRREVq/7KZSco8uQkqR2V7fxTERfJ9EdXJ62WiSOHDYxeFGv2Qe499e/38J5zq/EPzvABf6Zbtam7u5ivcIZt+KFnuapiZJ4CXR315P9FxnH47F1TVCwYmyel5q7cORk5WRLy+QmaGTQqej3f5586OzuFbizMqEjhbHxWvxG+tJ6jN0Um06kujX4uhXv6Boajyk3ToOiP6hQetdjP5Ta9NAZyed0M4Ky5IE/sqFGdA9WHBdPLUpSeAf3Fhq3VB1cBwov/g4bzwaaT9c9I+dDohffJz3wfVLe48p9HEcEL/EoxHNkY0+joPgl/h8pNMEhme0dhZC7GvhzCe6DjDEMTHat7ePqfHQwplPdb8yO7J+/YOP7Z8ws6ZwcGR9acHoW7OGhnDfPV8kgY9HvzK5wAxHn/llb9wykimO4CkfsU4KytLELSNZdP/0h18645aRLHD0h1+unJ9B7JCxboZy+/MlPh9BD9nWrXKu9su5yYmuFhzWONzrl6nxUGsXA13WOFya1oNvv9VDS4w1jqOcNxwc6WlKjkkS+PXLhtHTREhttu46rxwaHLCMW0ZCwhF2z+3Dx3nXl6I9938i4XCLX9DjlpFQe9Jd4Rf0uGUkVBzhUdbXL13FLSN116JfrtRyRSUvK788LuSLJXbSKq5OU1tvLDBCB2PXLc4XOByhIwn879+t4KpG8H2WcqVWru5ktgo5WcnJJRJ9Eig7Ol2J3us99UYzLysY6fg47x8/foP3VR96ODSyScd+xNCVYzg06pbO5rfXSLzzxAqOTrXR5GVF08+IJWLoil0cGrXpnD45TO4I+T9sakx5tPI0ywAAAABJRU5ErkJggg==" type="image/x-icon">
+    <style>
+        * { 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        body {
+            background: #FBECD2;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        #logo img {
+            height: 50px;
+            width: auto;
+        }
+
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 98%;
+            height: 70px;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #00BCC5;
+            border-radius: 20px;
+            font-weight: bold;
+            box-shadow: 0px 8px 15px #073B4C;
+            margin: 10px;
+            z-index: 100;
+        }
+
+        .navigation a{
+            text-decoration: none;
+            color: #073B4C;
+            padding: 6px 15px;
+            border-radius: 20px;
+            margin: 0 10px;
+        }
+
+        .navigation a:hover, 
+        .navigation a.active {
+            background: #FF6B00;
+            color: #FBECD2;
+        }
+
+        .content{
+            display: flex;
+            margin-bottom: 80px;
+        }
+
+        .chapter-list {
+            width: 18%;
+            background-color: #FBECD2;
+            box-shadow: 0px 8px 15px #073B4C;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 0 auto;
+            margin-top: 120px;
+            color:#073B4C;
+            height:fit-content;
+        }
+
+        .chapter-list ul {
+            list-style-type: none;
+        }
+        
+        .chapter-list ul li a {
+            display: inline-block;
+            padding: 10px 20px; 
+            text-decoration: none;
+            background-color: #00BCC5; 
+            color: #073B4C; 
+            border-radius: 20px; 
+            margin-bottom: 10px;
+        }
+        
+        .chapter-list ul li a:hover {
+            background-color: #FF6B00; 
+        }
+
+        .chapter-list {
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .chapter-info p{
+            padding-bottom: 10px;
+        }
+
+        .question {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            margin-bottom: 1em;
+        }
+        
+        .option-group label {
+            display: flex;
+            align-items: center;
+            gap: 1em;
+            cursor: pointer;
+            padding: 1em;
+            border-radius: 0.3em;
+            transition: background 0.2s;
+        }
+        
+        .option-group label:hover {
+            background: #FBECD2;
+        }
+        
+        .option-group input[type="radio"] {
+            margin: 0;
+        }
+        
+        #nextButton {
+            display: block;
+            background: #00BCC5;
+            color: #073B4C;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+        
+        #nextButton:hover {
+            background: #FF6B00;
+            color:#FBECD2;
+        }
+        
+        #nextButton:disabled {
+            cursor: not-allowed;
+        }
+
+        .chapter-info {
+            width: 50%;
+            background-color: #FBECD2;
+            box-shadow: 0px 8px 15px #073B4C;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 0 auto;
+            margin-top: 120px;
+            color:#073B4C;
+            height:fit-content;
+        }
+
+        #container {
+            width: 26%;
+            background-color: #FBECD2;
+            box-shadow: 0px 8px 15px #073B4C;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 0 auto;
+            margin-top: 120px;
+            color:#073B4C;
+            height:fit-content;
+        }
+
+
+        #container input{
+            border: none;
+            background-color: #FBECD2;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: #073B4C;
+        }
+
+        #search-btn {
+           padding: 10px 10px;
+           border-radius: 20px;
+           border: none;
+           /* border: 3px solid #073B4C; */
+           background-color: #00BCC5;
+           color: #073B4C;
+           font-size: 1em;
+           transition: background-color 0.3s;
+        }
+
+        #search-btn:hover {
+            /* border: 3px solid #00BCC5; */
+            background-color: #073B4C;
+            color:#FBECD2;
+        }
+
+        .result h3{
+            font-size: 20px;
+            color:#073B4C;
+        }
+
+        .result .word {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+        
+        .result .details{
+            display: flex;
+            gap: 10px;
+            color:#00BCC5;
+            margin: 5px 0 20px 0;
+            font-size: 14px;
+        }
+
+        .word-meaning {
+            color:#073B4C;
+        }
+
+        .word-example{
+            color: #073B4C;
+            font-style: italic;
+            border-left: 5px solid #00BCC5;
+            padding-left: 20px;
+            margin-top: 30px;
+        }
+
+        #container {
+            position: sticky;
+            top: 20px; 
+        }
+
+        footer {
+            background-color: #00BCC5; 
+            color: #073B4C;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            box-shadow: 0px -2px 10px #073B4C;
+        }
+
+        .footer-container {
+            max-width: 100%;
+            margin: auto;
+            text-align: center;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #FBECD2; 
+        }
+
+        footer p {
+            font-size: small;
+            margin: 0.5em 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <img src="data:image/png;base64,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" alt="StoryVoyage Logo">
+        </div>
+        <nav class="navigation">
+            <a href="{% url 'landing_page' %}">Home</a>
+            <a href="{% url 'book_list' %}" class="active">Books</a>
+            <a href="{% url 'badges' %}">Badges</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'register' %}">Join!</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="chapter-list">
+            <ul>
+                <li><a href="{% url 'thtb1' %}">Chapter 1</a></li><br><br>
+                <li><a href="{% url 'thtb2' %}">Chapter 2</a></li><br><br>
+
+                
+                <div id="questionContainer">
+                    <h4>Who is the heir to Sir Charles Baskerville?</h4><br>
+                    <input type="radio" id="SirHenry" name="character" value="Sir Henry Baskerville">
+                    <label for="SirHenry">Sir Henry Baskerville.</label><br>
+                    <input type="radio" id="DrMortimer" name="character" value="Dr. Mortimer">
+                    <label for="DrMortimer">Dr. Mortimer.</label><br>
+                    <input type="radio" id="MrsHudson" name="character" value="Mrs. Hudson">
+                    <label for="MrsHudson">Mrs. Hudson.</label><br><br>
+                </div>
+                
+                <button id="nextButton" disabled>Chapter 3</button>
+
+                <!-- <li><a href="{% url 'thtb3' %}">Chapter 3</a></li><br><br>
+                <li><a href="{% url 'thtbgame' %}">Mini Game!</a></li> -->
+            </ul>
+        </div>
+        <div class="chapter-info">
+            <p class="center">
+                <h4>Chapter II. The Curse of the Baskervilles</h4><br>
+            </p>
+            <p>
+                “I have in my pocket a manuscript,” said Dr. James Mortimer.
+              </p>
+          <p>
+                “I observed it as you entered the room,” said Holmes.
+              </p>
+          <p>
+                “It is an old manuscript.”
+               </p>
+          <p>
+                “Early eighteenth century, unless it is a forgery.”
+               </p>
+          <p>
+                “How can you say that, sir?”
+               </p>
+          <p>
+                “You have presented an inch or two of it to my examination all the time
+                that you have been talking. It would be a poor expert who could not give
+                the date of a document within a decade or so. You may possibly have read
+                my little monograph upon the subject. I put that at 1730.”
+               </p>
+          <p>
+                “The exact date is 1742.” Dr. Mortimer drew it from his breast-pocket.
+                “This family paper was committed to my care by Sir Charles Baskerville,
+                whose sudden and tragic death some three months ago created so much
+                excitement in Devonshire. I may say that I was his personal friend as well
+                as his medical attendant. He was a strong-minded man, sir, shrewd,
+                practical, and as unimaginative as I am myself. Yet he took this document
+                very seriously, and his mind was prepared for just such an end as did
+                eventually overtake him.”
+               </p>
+          <p>
+                Holmes stretched out his hand for the manuscript and flattened it upon
+                his knee. “You will observe, Watson, the alternative use of the
+                long <i>s</i> and the short. It is one of several indications which
+                enabled me to fix the date.”
+               </p>
+          <p>
+                I looked over his shoulder at the yellow paper and the faded script. At
+                the head was written: “Baskerville Hall,” and below in large, scrawling
+                figures: “1742.”
+               </p>
+          <p>
+                “It appears to be a statement of some sort.”
+               </p>
+          <p>
+                “Yes, it is a statement of a certain legend which runs in the Baskerville
+                family.”
+               </p>
+          <p>
+                “But I understand that it is something more modern and practical upon
+                which you wish to consult me?”
+               </p>
+          <p>
+                “Most modern. A most practical, pressing matter, which must be decided
+                within twenty-four hours. But the manuscript is short and is intimately
+                connected with the affair. With your permission I will read it to you.”
+               </p>
+          <p>
+                Holmes leaned back in his chair, placed his finger-tips together, and
+                closed his eyes, with an air of resignation. Dr. Mortimer turned the
+                manuscript to the light and read in a high, cracking voice the following
+                curious, old-world narrative:
+              </p>
+          <p><i>
+                  “Of the origin of the Hound of the Baskervilles there have been
+                  many statements, yet as I come in a direct line from Hugo Baskerville,
+                  and as I had the story from my father, who also had it from his, I have
+                  set it down with all belief that it occurred even as is here set forth.
+                   And I would have you believe, my sons, that the same Justice which
+                  punishes sin may also most graciously forgive it, and that no ban is so
+                  heavy but that by prayer and repentance it may be removed.  Learn then
+                  from this story not to fear the fruits of the past, but rather to be
+                  circumspect in the future, that those foul passions whereby our family
+                  has suffered so grievously may not again be loosed to our undoing.<br><br>
+          
+                      “Know then that in the time of the Great Rebellion (the
+                  history of which by the learned Lord Clarendon I most earnestly commend
+                  to your attention) this Manor of Baskerville was held by Hugo of that
+                  name, nor can it be gainsaid that he was a most wild, profane, and
+                  godless man.  This, in truth, his neighbours might have pardoned,
+                  seeing that saints have never flourished in those parts, but there was
+                  in him a certain wanton and cruel humour which made his name a by-word
+                  through the West.  It chanced that this Hugo came to love (if, indeed,
+                  so dark a passion may be known under so bright a name) the daughter of
+                  a yeoman who held lands near the Baskerville estate. But the young
+                  maiden, being discreet and of good repute, would ever avoid him, for
+                  she feared his evil name.  So it came to pass that one Michaelmas this
+                  Hugo, with five or six of his idle and wicked companions, stole down
+                  upon the farm and carried off the maiden, her father and brothers being
+                  from home, as he well knew.  When they had brought her to the Hall the
+                  maiden was placed in an upper chamber, while Hugo and his friends sat
+                  down to a long carouse, as was their nightly custom.  Now, the poor
+                  lass upstairs was like to have her wits turned at the singing and
+                  shouting and terrible oaths which came up to her from below, for they
+                  say that the words used by Hugo Baskerville, when he was in wine, were
+                  such as might blast the man who said them.  At last in the stress of
+                  her fear she did that which might have daunted the bravest or most
+                  active man, for by the aid of the growth of ivy which covered (and
+                  still covers) the south wall she came down from under the eaves, and so
+                  homeward across the moor, there being three leagues betwixt the Hall
+                  and her father’s farm.<br><br>
+          
+                      “It chanced that some little time later Hugo left his guests
+                  to carry food and drink—with other worse things,
+                  perchance—to his captive, and so found the cage empty and the
+                  bird escaped.  Then, as it would seem, he became as one that hath a
+                  devil, for, rushing down the stairs into the dining-hall, he sprang
+                  upon the great table, flagons and trenchers flying before him, and he
+                  cried aloud before all the company that he would that very night render
+                  his body and soul to the Powers of Evil if he might but overtake the
+                  wench.  And while the revellers stood aghast at the fury of the man,
+                  one more wicked or, it may be, more drunken than the rest, cried out
+                  that they should put the hounds upon her.  Whereat Hugo ran from the
+                  house, crying to his grooms that they should saddle his mare and
+                  unkennel the pack, and giving the hounds a kerchief of the
+                  maid’s, he swung them to the line, and so off full cry in the
+                  moonlight over the moor.<br><br>
+          
+                      “Now, for some space the revellers stood agape, unable to
+                  understand all that had been done in such haste.  But anon their
+                  bemused wits awoke to the nature of the deed which was like to be done
+                  upon the moorlands.  Everything was now in an uproar, some calling for
+                  their pistols, some for their horses, and some for another flask of
+                  wine.  But at length some sense came back to their crazed minds, and
+                  the whole of them, thirteen in number, took horse and started in
+                  pursuit.  The moon shone clear above them, and they rode swiftly
+                  abreast, taking that course which the maid must needs have taken if she
+                  were to reach her own home.<br><br>
+          
+                      “They had gone a mile or two when they passed one of the
+                  night shepherds upon the moorlands, and they cried to him to know if he
+                  had seen the hunt.  And the man, as the story goes, was so crazed with
+                  fear that he could scarce speak, but at last he said that he had indeed
+                  seen the unhappy maiden, with the hounds upon her track.  ‘But I
+                  have seen more than that,’ said he, ‘for Hugo Baskerville
+                  passed me upon his black mare, and there ran mute behind him such a
+                  hound of hell as God forbid should ever be at my heels.’  So the
+                  drunken squires cursed the shepherd and rode onward.  But soon their
+                  skins turned cold, for there came a galloping across the moor, and the
+                  black mare, dabbled with white froth, went past with trailing bridle
+                  and empty saddle.  Then the revellers rode close together, for a great
+                  fear was on them, but they still followed over the moor, though each,
+                  had he been alone, would have been right glad to have turned his
+                  horse’s head.  Riding slowly in this fashion they came at last
+                  upon the hounds.  These, though known for their valour and their breed,
+                  were whimpering in a cluster at the head of a deep dip or goyal, as we
+                  call it, upon the moor, some slinking away and some, with starting
+                  hackles and staring eyes, gazing down the narrow valley before
+                  them.<br><br>
+          
+                      “The company had come to a halt, more sober men, as you may
+                  guess, than when they started.  The most of them would by no means
+                  advance, but three of them, the boldest, or it may be the most drunken,
+                  rode forward down the goyal. Now, it opened into a broad space in which
+                  stood two of those great stones, still to be seen there, which were set
+                  by certain forgotten peoples in the days of old. The moon was shining
+                  bright upon the clearing, and there in the centre lay the unhappy maid
+                  where she had fallen, dead of fear and of fatigue.  But it was not the
+                  sight of her body, nor yet was it that of the body of Hugo Baskerville
+                  lying near her, which raised the hair upon the heads of these three
+                  dare-devil roysterers, but it was that, standing over Hugo, and
+                  plucking at his throat, there stood a foul thing, a great, black beast,
+                  shaped like a hound, yet larger than any hound that ever mortal eye has
+                  rested upon.  And even as they looked the thing tore the throat out of
+                  Hugo Baskerville, on which, as it turned its blazing eyes and dripping
+                  jaws upon them, the three shrieked with fear and rode for dear life,
+                  still screaming, across the moor.  One, it is said, died that very
+                  night of what he had seen, and the other twain were but broken men for
+                  the rest of their days.<br><br>
+          
+                      “Such is the tale, my sons, of the coming of the hound which
+                  is said to have plagued the family so sorely ever since.  If I have set
+                  it down it is because that which is clearly known hath less terror than
+                  that which is but hinted at and guessed.  Nor can it be denied that
+                  many of the family have been unhappy in their deaths, which have been
+                  sudden, bloody, and mysterious.  Yet may we shelter ourselves in the
+                  infinite goodness of Providence, which would not forever punish the
+                  innocent beyond that third or fourth generation which is threatened in
+                  Holy Writ.  To that Providence, my sons, I hereby commend you, and I
+                  counsel you by way of caution to forbear from crossing the moor in
+                  those dark hours when the powers of evil are exalted.<br><br>
+          
+                      “[This from Hugo Baskerville to his sons Rodger and John,
+                  with instructions that they say nothing thereof to their sister
+                  Elizabeth.]”</i>
+              </p>
+          <p>
+                When Dr. Mortimer had finished reading this singular narrative he pushed
+                his spectacles up on his forehead and stared across at Mr. Sherlock
+                Holmes. The latter yawned and tossed the end of his cigarette into the
+                fire.
+              </p>
+          <p>
+                “Well?” said he.
+              </p>
+          <p>
+                “Do you not find it interesting?”
+               </p>
+          <p>
+                “To a collector of fairy tales.”
+               </p>
+          <p>
+                Dr. Mortimer drew a folded newspaper out of his pocket.
+              </p>
+          <p>
+                “Now, Mr. Holmes, we will give you something a little more recent. This is
+                the <i>Devon County Chronicle</i> of May 14th of this year. It is a short account
+                of the facts elicited at the death of Sir Charles Baskerville which
+                occurred a few days before that date.”
+               </p>
+          <p>
+                My friend leaned a little forward and his expression became intent. Our
+                visitor readjusted his glasses and began:
+              </p>
+          <p> <i>
+                  “The recent sudden death of Sir Charles Baskerville, whose name
+                  has been mentioned as the probable Liberal candidate for Mid-Devon at
+                  the next election, has cast a gloom over the county.  Though Sir
+                  Charles had resided at Baskerville Hall for a comparatively short
+                  period his amiability of character and extreme generosity had won the
+                  affection and respect of all who had been brought into contact with
+                  him.  In these days of <i>nouveaux riches</i> it is refreshing to find a case
+                  where the scion of an old county family which has fallen upon evil days
+                  is able to make his own fortune and to bring it back with him to
+                  restore the fallen grandeur of his line.  Sir Charles, as is well
+                  known, made large sums of money in South African speculation. More wise
+                  than those who go on until the wheel turns against them, he realised
+                  his gains and returned to England with them.  It is only two years
+                  since he took up his residence at Baskerville Hall, and it is common
+                  talk how large were those schemes of reconstruction and improvement
+                  which have been interrupted by his death.  Being himself childless, it
+                  was his openly expressed desire that the whole countryside should,
+                  within his own lifetime, profit by his good fortune, and many will have
+                  personal reasons for bewailing his untimely end.  His generous
+                  donations to local and county charities have been frequently chronicled
+                  in these columns.<br><br>
+          
+                      “The circumstances connected with the death of Sir Charles
+                  cannot be said to have been entirely cleared up by the inquest, but at
+                  least enough has been done to dispose of those rumours to which local
+                  superstition has given rise. There is no reason whatever to suspect
+                  foul play, or to imagine that death could be from any but natural
+                  causes. Sir Charles was a widower, and a man who may be said to have
+                  been in some ways of an eccentric habit of mind. In spite of his
+                  considerable wealth he was simple in his personal tastes, and his
+                  indoor servants at Baskerville Hall consisted of a married couple named
+                  Barrymore, the husband acting as butler and the wife as housekeeper.
+                  Their evidence, corroborated by that of several friends, tends to show
+                  that Sir Charles’s health has for some time been impaired, and
+                  points especially to some affection of the heart, manifesting itself in
+                  changes of colour, breathlessness, and acute attacks of nervous
+                  depression. Dr. James Mortimer, the friend and medical attendant of the
+                  deceased, has given evidence to the same effect.<br><br>
+          
+                      “The facts of the case are simple.  Sir Charles Baskerville
+                  was in the habit every night before going to bed of walking down the
+                  famous yew alley of Baskerville Hall.  The evidence of the Barrymores
+                  shows that this had been his custom. On the fourth of May Sir Charles
+                  had declared his intention of starting next day for London, and had
+                  ordered Barrymore to prepare his luggage.  That night he went out as
+                  usual for his nocturnal walk, in the course of which he was in the
+                  habit of smoking a cigar.  He never returned.  At twelve o’clock
+                  Barrymore, finding the hall door still open, became alarmed, and,
+                  lighting a lantern, went in search of his master.  The day had been
+                  wet, and Sir Charles’s footmarks were easily traced down the
+                  alley.  Halfway down this walk there is a gate which leads out on to
+                  the moor. There were indications that Sir Charles had stood for some
+                  little time here.  He then proceeded down the alley, and it was at the
+                  far end of it that his body was discovered. One fact which has not been
+                  explained is the statement of Barrymore that his master’s
+                  footprints altered their character from the time that he passed the
+                  moor-gate, and that he appeared from thence onward to have been walking
+                  upon his toes.  One Murphy, a gipsy horse-dealer, was on the moor at no
+                  great distance at the time, but he appears by his own confession to
+                  have been the worse for drink. He declares that he heard cries but is
+                  unable to state from what direction they came.  No signs of violence
+                  were to be discovered upon Sir Charles’s person, and though the
+                  doctor’s evidence pointed to an almost incredible facial
+                  distortion—so great that Dr. Mortimer refused at first to believe
+                  that it was indeed his friend and patient who lay before him—it
+                  was explained that that is a symptom which is not unusual in cases of
+                  dyspnœa and death from cardiac exhaustion.  This explanation was borne
+                  out by the post-mortem examination, which showed long-standing organic
+                  disease, and the coroner’s jury returned a verdict in accordance
+                  with the medical evidence.  It is well that this is so, for it is
+                  obviously of the utmost importance that Sir Charles’s heir should
+                  settle at the Hall and continue the good work which has been so sadly
+                  interrupted.  Had the prosaic finding of the coroner not finally put an
+                  end to the romantic stories which have been whispered in connection
+                  with the affair, it might have been difficult to find a tenant for
+                  Baskerville Hall.  It is understood that the next of kin is Mr. Henry
+                  Baskerville, if he be still alive, the son of Sir Charles
+                  Baskerville’s younger brother.  The young man when last heard of
+                  was in America, and inquiries are being instituted with a view to
+                  informing him of his good fortune.”<br></i>
+              </p>
+          <p>
+                Dr. Mortimer refolded his paper and replaced it in his pocket. “Those are
+                the public facts, Mr. Holmes, in connection with the death of Sir Charles
+                Baskerville.”
+               </p>
+          <p>
+                “I must thank you,” said Sherlock Holmes, “for calling my attention to a
+                case which certainly presents some features of interest. I had observed
+                some newspaper comment at the time, but I was exceedingly preoccupied by
+                that little affair of the Vatican cameos, and in my anxiety to oblige the
+                Pope I lost touch with several interesting English cases. This article,
+                you say, contains all the public facts?”
+               </p>
+          <p>
+                “It does.”
+               </p>
+          <p>
+                “Then let me have the private ones.” He leaned back, put his finger-tips
+                together, and assumed his most impassive and judicial expression.
+              </p>
+          <p>
+                “In doing so,” said Dr. Mortimer, who had begun to show signs of some
+                strong emotion, “I am telling that which I have not confided to anyone. My
+                motive for withholding it from the coroner’s inquiry is that a man of
+                science shrinks from placing himself in the public position of seeming to
+                indorse a popular superstition. I had the further motive that Baskerville
+                Hall, as the paper says, would certainly remain untenanted if anything
+                were done to increase its already rather grim reputation. For both these
+                reasons I thought that I was justified in telling rather less than I knew,
+                since no practical good could result from it, but with you there is no
+                reason why I should not be perfectly frank.
+              </p>
+          <p>
+                “The moor is very sparsely inhabited, and those who live near each other
+                are thrown very much together. For this reason I saw a good deal of Sir
+                Charles Baskerville. With the exception of Mr. Frankland, of Lafter Hall,
+                and Mr. Stapleton, the naturalist, there are no other men of education
+                within many miles. Sir Charles was a retiring man, but the chance of his
+                illness brought us together, and a community of interests in science kept
+                us so. He had brought back much scientific information from South Africa,
+                and many a charming evening we have spent together discussing the
+                comparative anatomy of the Bushman and the Hottentot.
+              </p>
+          <p>
+                “Within the last few months it became increasingly plain to me that Sir
+                Charles’s nervous system was strained to the breaking point. He had taken
+                this legend which I have read you exceedingly to heart—so much so
+                that, although he would walk in his own grounds, nothing would induce him
+                to go out upon the moor at night. Incredible as it may appear to you, Mr.
+                Holmes, he was honestly convinced that a dreadful fate overhung his
+                family, and certainly the records which he was able to give of his
+                ancestors were not encouraging. The idea of some ghastly presence
+                constantly haunted him, and on more than one occasion he has asked me
+                whether I had on my medical journeys at night ever seen any strange
+                creature or heard the baying of a hound. The latter question he put to me
+                several times, and always with a voice which vibrated with excitement.
+              </p>
+          <p>
+                “I can well remember driving up to his house in the evening some three
+                weeks before the fatal event. He chanced to be at his hall door. I had
+                descended from my gig and was standing in front of him, when I saw his
+                eyes fix themselves over my shoulder and stare past me with an expression
+                of the most dreadful horror. I whisked round and had just time to catch a
+                glimpse of something which I took to be a large black calf passing at the
+                head of the drive. So excited and alarmed was he that I was compelled to
+                go down to the spot where the animal had been and look around for it. It
+                was gone, however, and the incident appeared to make the worst impression
+                upon his mind. I stayed with him all the evening, and it was on that
+                occasion, to explain the emotion which he had shown, that he confided to
+                my keeping that narrative which I read to you when first I came. I mention
+                this small episode because it assumes some importance in view of the
+                tragedy which followed, but I was convinced at the time that the matter
+                was entirely trivial and that his excitement had no justification.
+              </p>
+          <p>
+                “It was at my advice that Sir Charles was about to go to London. His heart
+                was, I knew, affected, and the constant anxiety in which he lived, however
+                chimerical the cause of it might be, was evidently having a serious effect
+                upon his health. I thought that a few months among the distractions of
+                town would send him back a new man. Mr. Stapleton, a mutual friend who was
+                much concerned at his state of health, was of the same opinion. At the
+                last instant came this terrible catastrophe.
+              </p>
+          <p>
+                “On the night of Sir Charles’s death Barrymore the butler, who made the
+                discovery, sent Perkins the groom on horseback to me, and as I was sitting
+                up late I was able to reach Baskerville Hall within an hour of the event.
+                I checked and corroborated all the facts which were mentioned at the
+                inquest. I followed the footsteps down the yew alley, I saw the spot at
+                the moor-gate where he seemed to have waited, I remarked the change in the
+                shape of the prints after that point, I noted that there were no other
+                footsteps save those of Barrymore on the soft gravel, and finally I
+                carefully examined the body, which had not been touched until my arrival.
+                Sir Charles lay on his face, his arms out, his fingers dug into the
+                ground, and his features convulsed with some strong emotion to such an
+                extent that I could hardly have sworn to his identity. There was certainly
+                no physical injury of any kind. But one false statement was made by
+                Barrymore at the inquest. He said that there were no traces upon the
+                ground round the body. He did not observe any. But I did—some little
+                distance off, but fresh and clear.”
+               </p>
+          <p>
+                “Footprints?”
+               </p>
+          <p>
+                “Footprints.”
+               </p>
+          <p>
+                “A man’s or a woman’s?”
+               </p>
+          <p>
+                Dr. Mortimer looked strangely at us for an instant, and his voice sank
+                almost to a whisper as he answered.
+              </p>
+          <p>
+                “Mr. Holmes, they were the footprints of a gigantic hound!”
+               </p>
+
+        
+        </div>
+
+
+        <div id="container">
+            <div class="search-box">
+                <input type="text" placeholder="Type the word here..." id="inp-word">
+            
+                <button id="search-btn">Search</button>
+            </div>
+            <div class="result" id="result">  
+            </div>
+        </div>
+
+    </div>
+
+        <script>
+            let characterInputs = document.getElementsByName('character');
+            let nextButton = document.getElementById('nextButton');
+            
+            for(let i=0; i < characterInputs.length; i++){
+                characterInputs[i].addEventListener('change', function() {
+                    if (this.value == "Sir Henry Baskerville") {
+                        nextButton.disabled = false;
+                        nextButton.style.opacity = 1;
+                    } else {
+                        nextButton.disabled = true;
+                        nextButton.style.opacity = 0.5;
+                    }
+                });
+            }
+            
+            nextButton.addEventListener('click', function() {
+                if (!this.disabled) {
+                    window.location.href = "{% url 'thtb3' %}";
+                }
+            });
+
+        </script>
+
+        <script>
+            const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
+
+            const result = document.getElementById("result");
+
+            const btn = document.getElementById("search-btn");
+
+            btn.addEventListener("click", () => {
+                let inpWord = document.getElementById("inp-word").value;
+
+                fetch(`${url}${inpWord}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    result.innerHTML = `
+                    <div class="word">
+                    <h3>${inpWord}</h3>
+                </div>
+                <div class="details">
+                    <p>${data[0].meanings[0].partOfSpeech}</p>
+                    <p>/${data[0].phonetic}/</p>
+                </div>
+                <p class="word-meaning">
+                    ${data[0].meanings[0].definitions[0].definition || "No definition found."}
+                </p>
+                <p class="word-example">
+                    ${data[0].meanings[0].definitions[0].example || "No example found."}
+                </p>
+
+                `;
+                })
+                .catch( () => {
+                    result.innerHTML = `<h3>Couldn't Find the Word</h3>`;
+                });
+
+            });
+
+        </script>
+    
+    <footer>
+        <div class="footer-container">
+          <p>StoryVoyage: A website that indents to gamify reading. Created by <a href="mailto:20190223@student.act.edu">Gabriela Shehu.</a></p>
+          <p>Supervised by: <a href="mailto:ivictor@act.edu">Iosif Victoratos</a></p>
+          <p>Books retrieved from <a href="https://www.gutenberg.org/" target="_blank">Project Gutenberg</a></p>
+          <p>&copy; 2023 Gabriela Shehu. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
